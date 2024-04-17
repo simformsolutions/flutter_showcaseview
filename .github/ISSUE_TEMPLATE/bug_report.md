@@ -23,7 +23,7 @@ A clear and concise description of what you expected to happen.
 **Screenshots**
 If applicable, add screenshots to help explain your problem.
 
-**ShowcaseView version()**
+**ShowcaseView version**
 Please share the showcaseview version in which you can reproduce this issue.
 
 **Desktop (please complete the following information):**
