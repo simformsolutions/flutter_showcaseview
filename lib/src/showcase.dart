@@ -257,6 +257,12 @@ class Showcase extends StatefulWidget {
   /// Defaults to 7.
   final double toolTipSlideEndDistance;
 
+  /// Defines tooltip action widget position.
+  /// It can be inside the tooltip widget or outside.
+  ///
+  /// Default to [TooltipActionPosition.inside]
+  final TooltipActionPosition tooltipActionPosition;
+
   const Showcase({
     required this.key,
     required this.description,
@@ -304,6 +310,7 @@ class Showcase extends StatefulWidget {
     this.onBarrierClick,
     this.disableBarrierInteraction = false,
     this.toolTipSlideEndDistance = 7,
+    this.tooltipActionPosition = TooltipActionPosition.inside,
   })  : height = null,
         width = null,
         container = null,
@@ -369,7 +376,8 @@ class Showcase extends StatefulWidget {
         assert(overlayOpacity >= 0.0 && overlayOpacity <= 1.0,
             "overlay opacity must be between 0 and 1."),
         assert(onBarrierClick == null || disableBarrierInteraction == false,
-            "can't use onBarrierClick & disableBarrierInteraction property at same time");
+            "can't use onBarrierClick & disableBarrierInteraction property at same time"),
+        tooltipActionPosition = TooltipActionPosition.inside;
 
   @override
   State<Showcase> createState() => _ShowcaseState();
@@ -460,6 +468,7 @@ class _ShowcaseState extends State<Showcase> {
             screenWidth: size.width,
             screenHeight: size.height,
           );
+          print(position?.getCenter());
           return buildOverlayOnTarget(offset, rectBound.size, rectBound, size);
         },
         showOverlay: true,
@@ -640,6 +649,7 @@ class _ShowcaseState extends State<Showcase> {
             titleTextDirection: widget.titleTextDirection,
             descriptionTextDirection: widget.descriptionTextDirection,
             toolTipSlideEndDistance: widget.toolTipSlideEndDistance,
+            tooltipActionPosition: widget.tooltipActionPosition,
           ),
         ],
       ],
